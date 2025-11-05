@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airtechno</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-elements"></div>
+  <nav>
+    <div class="nav-logo"><img src="./images/logo.jpg" alt=""></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="explore.html">Explore</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-btn" onclick="toggleMenu()">
+      <i class="fas fa-times"></i>
+    </div>
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+      <a href="explore.html" onclick="toggleMenu()">Explore</a>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <h1 style="color: #fff;">COMAC</h1>
+      <p style="color: #fff;">
+COMAC (Commercial Aircraft Corporation of China) – China’s state-owned aerospace corporation, founded in 2008 and headquartered in Shanghai, aims to reduce dependence on Western corporations by developing domestic commercial aircraft.
+Notable aircraft lines:
+<br>* ARJ21: Regional aircraft, carrying 78-90 passengers, range 2,225-3,700 km, put into operation in 2016.
+<br>* C919: Narrow-body aircraft, carrying 156-192 passengers, range 4,075-5,555 km, starting operation in 2023 with China Eastern Airlines.
+<br>* CR929: Wide-body aircraft in cooperation with Russia, expected to carry 250-320 passengers, under development.
+COMAC represents China’s great ambition in the global commercial aviation industry.      </p><div class="wrapper">
+        <button class="pop-btn">Hover Me</button>
+        <div class="notification" aria-hidden="true">
+          <img src="./images/comac.png" alt="COMAC">
+        </div>
+      </div>
+      <div class="bg-main-container">
+      <div class="bg-main">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.95/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/thFwO5-qMyC4c0lD/scene.splinecode"></spline-viewer>
+</div>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/p/1BSbj2Xnst/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/p/DCwOhSqP9h8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="><i class="fab fa-instagram"></i></a>
+    </div>
+    
+     
+
+  <script>
+    function toggleMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      overlay.classList.toggle('active');
+      
+      // Toggle body overflow when menu is open
+      if (mobileMenu.classList.contains('open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      const overlay = document.getElementById('overlay');
+      
+      if (mobileMenu.classList.contains('open') && 
+          !mobileMenu.contains(event.target) && 
+          !hamburger.contains(event.target)) {
+        toggleMenu();
+      }
+    });
+  </script>
+  <style>
+    html, body {
+      margin: 0;
+      background-image: url("./images/sky\ 2.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      height: auto; /* allow height to be driven by content (the image) */
+    }
+    /* Ensure parent containers don't clip the large popup */
+    .container, .content {
+      overflow: visible;
+    }
+
+    /* Keep the wrapper as a block so the notification can expand the page */
+    .wrapper {
+      position: relative;
+      display: block;
+    }
+
+    /* Button */
+    .pop-btn {
+      padding: 10px 16px;
+      background: #9455e1;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Put the notification in normal flow (not fixed). When shown it will set the page height. */
+    .notification {
+      position: static; /* in-flow so body height equals image height when displayed */
+      margin: 0 auto 24px;
+      background: rgba(255,255,255,0.95);
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      display: none;
+      white-space: nowrap;
+      overflow: visible;
+      max-width: 100vw;
+      box-sizing: border-box;
+    }
+
+    .wrapper:hover .notification {
+      display: block;
+    }
+
+    /* Make the image fill the viewport width and let its natural aspect ratio define the height */
+    .notification img {
+      display: block;
+      width: min(100vw, 800px);
+      max-width: 90%;
+      height: auto;
+      border-radius: 4px;
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      transform: translateX(-50%);
+      margin-bottom: 12px;
+      z-index: 50;
+    }
+  
+
+    /* Make the viewer smaller: use viewport height so it scales with screen */
+    .spline-viewer {
+      display: block;
+      width: 80%;
+      height: min(50vh, 600px); /* smaller height — adjust as needed */
+      min-height: 400px; /* ensure desktop minimum */
+      max-height: 600px;
+      transform-origin: center center;
+      transform: scale(0.95); /* subtle reduce */
+    }
+  </style>
+</body>
+</html>
